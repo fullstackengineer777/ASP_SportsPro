@@ -1,0 +1,66 @@
+@{
+    ViewData["Title"] = "Incident Edit";
+
+    List<Product> products = ViewBag.products;
+    List<Customer> customers = ViewBag.customers;
+    List<Technician> technicians = ViewBag.technicians;
+    Incident incident = ViewBag.incident;
+}
+
+@model SportsPro.Models.Product
+
+<div>
+
+    <h1>Edit Incident</h1>
+    <form asp-action="Update" asp-controller="Incident" asp-route-id="0">
+
+        <input type="hidden" class="form-control" id="ProductID" name="IncidentID" value="@incident.IncidentID" />
+        <div class="form-group">
+            <label>Customer</label>
+            <select class="form-select" aria-label="Select Country" name="CustomerID">
+                @foreach (var customer in customers)
+                {
+                    <option value="@customer.CustomerID">@customer.FirstName @customer.LastName</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Product</label>
+            <select class="form-select" aria-label="Select Country" name="ProductID">
+                @foreach (var product in products)
+                {
+                    <option value="@product.ProductID">@product.Name</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="Title">Title</label>
+            <input class="form-control" id="Title" name="Title" value="@incident.Title" />
+        </div>
+        <div class="form-group">
+            <label for="Description"></label>
+            <textarea class="form-control" id="Description" name="Description">@incident.Description</textarea>
+        </div>
+        <div class="form-group">
+            <label>Technician</label>
+            <select class="form-select" aria-label="Assign a Technician" name="TechnicianID">
+                @foreach (var technician in technicians)
+                {
+                    <option value="@technician.TechnicianID">@technician.Name</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="YearlyPrice">DateOpened</label>
+            <input class="form-control" id="DateOpened" name="DateOpened" value="@incident.DateOpened" />
+        </div>
+        <div class="form-group">
+            <label for="DateClosed">DateClosed</label>
+            <input class="form-control" id="DateClosed" name="DateClosed" value="@incident.DateClosed" />
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a asp-controller="Incident" asp-action="Index" class="btn btn-primary" role="button">Cancel</a>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,26 @@
+@{
+    ViewData["Title"] = "Technician";
+}
+@model SportsPro.Models.Technician
+
+<div>
+    <h1>Add Technician</h1>
+    <form asp-action="Create" asp-controller="Technician" asp-route-id="0">
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Phone"></label>
+            <input asp-for="Phone" class="form-control" />
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a asp-controller="Technician" asp-action="Index" class="btn btn-primary" role="button">Cancel</a>
+        </div>
+    </form>
+</div>

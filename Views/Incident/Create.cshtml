@@ -1,0 +1,63 @@
+@{
+    ViewData["Title"] = "Incident";
+    List<Product> products = ViewBag.products;
+    List<Customer> customers = ViewBag.customers;
+    List<Technician> technicians = ViewBag.technicians;
+}
+@model SportsPro.Models.Incident
+
+
+<div>
+    <h1>Add Incident</h1>
+    <form asp-action="Create" asp-controller="Incident" asp-route-id="0">
+        <div class="form-group">
+            <label>Customer</label>
+            <select class="form-select" aria-label="Select Country" name="CustomerID">
+                @foreach (var customer in customers)
+                {
+                    <option value="@customer.CustomerID">@customer.FirstName @customer.LastName</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Product</label>
+            <select class="form-select" aria-label="Select Country" name="ProductID">
+                @foreach (var product in products)
+                {
+                    <option value="@product.ProductID">@product.Name</option>
+                }
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label asp-for="Title"></label>
+            <input asp-for="Title" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Description"></label>
+            <textarea asp-for="Description" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Technician</label>
+            <select class="form-select" aria-label="Assign a Technician" name="TechnicianID">
+                @foreach (var technician in technicians)
+                {
+                    <option value="@technician.TechnicianID">@technician.Name</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label asp-for="DateOpened"></label>
+            <input asp-for="DateOpened" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="DateClosed"></label>
+            <input asp-for="DateClosed" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a asp-controller="Customer" asp-action="Index" class="btn btn-primary" role="button">Cancel</a>
+        </div>
+    </form>
+</div>

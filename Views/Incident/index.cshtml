@@ -1,0 +1,36 @@
+@{
+    ViewData["Title"] = "Incident";
+}
+@model List<SportsPro.Models.Incident>
+<div>
+    <h1>Product Manager</h1>
+    <table class="table table-striped table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Customer</th>
+                <th scope="col">Product</th>
+                <th scope="col">Date Opened</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var incident in Model)
+            {
+                <tr>
+                    <td>@incident.Title</td>
+                    <td>@incident.Customer.FullName</td>
+                    <td>@incident.Product.Name</td>
+                    <td>@incident.DateOpened</td>
+                    <td><a asp-controller="Incident" asp-action="Edit" asp-route-id="@incident.IncidentID" class="btn btn-primary" role="button">Edit</a></td>
+                    <td><a asp-controller="Incident" asp-action="Delete" asp-route-id="@incident.IncidentID" class="btn btn-primary" role="button">Delete</a></td>
+                </tr>
+                
+            }
+        </tbody>
+    </table>
+    <a asp-controller="Incident" asp-action="Create" class="btn btn-primary" role="button">Add Incident</a>
+
+
+</div>

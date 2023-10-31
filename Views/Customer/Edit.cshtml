@@ -1,0 +1,62 @@
+@{
+    ViewData["Title"] = "Customer Edit";
+    List<Country> countrys = ViewBag.countrys;
+    Customer customer = ViewBag.customer;
+}
+
+@model SportsPro.Models.Customer
+
+<div>
+
+    <h1>Edit Customer</h1>
+    <form asp-action="Update" asp-controller="Customer" asp-route-id="0">
+
+        <input type="hidden" class="form-control" id="CustomerID" name="CustomerID" value="@customer.CustomerID" />
+        <div class="form-group">
+            <label for="FirstName">FirstName</label>
+            <input class="form-control" id="FirstName" name="FirstName" value="@customer.FirstName" />
+        </div>
+        <div class="form-group">
+            <label for="LastName">LastName</label>
+            <input class="form-control" id="LastName" name="LastName" value="@customer.LastName" />
+        </div>
+        <div class="form-group">
+            <label for="Address">Address</label>
+            <input class="form-control" id="Address" name="Address" value="@customer.Address" />
+        </div>
+        <div class="form-group">
+            <label for="City">City</label>
+            <input class="form-control" id="City" name="City" value="@customer.City" />
+        </div>
+        <div class="form-group">
+            <label for="State">State</label>
+            <input class="form-control" id="State" name="State" value="@customer.State" />
+        </div>
+        <div class="form-group">
+            <label for="PostalCode">PostalCode</label>
+            <input class="form-control" id="PostalCode" name="PostalCode" value="@customer.PostalCode" />
+        </div>
+        <div class="form-group">
+            <label for="Phone">Phone</label>
+            <input class="form-control" id="Phone" name="Phone" value="@customer.Phone" />
+        </div>
+        <div class="form-group">
+            <label for="Email">Email</label>
+            <input class="form-control" id="Email" name="Email" value="@customer.Email" />
+        </div>
+        <div class="form-group">
+            <label>Country</label>
+            <select class="form-select" aria-label="Select Country" name="CountryID">
+                @foreach (var country in countrys)
+                {
+                    <option value="@country.CountryID">@country.Name</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a asp-controller="Customer" asp-action="Index" class="btn btn-primary" role="button">Cancel</a>
+        </div>
+    </form>
+</div>

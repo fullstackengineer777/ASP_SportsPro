@@ -1,0 +1,32 @@
+@{
+    ViewData["Title"] = "Product";
+}
+
+@model SportsPro.Models.Product
+
+<div>
+
+    <h1>Add Product</h1>
+    <form asp-action="Create" asp-controller="Product" asp-route-id="0">
+        <div class="form-group">
+            <label asp-for="ProductCode"></label>
+            <input asp-for="ProductCode" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="YearlyPrice"></label>
+            <input asp-for="YearlyPrice" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="ReleaseDate"></label>
+            <input asp-for="ReleaseDate" class="form-control" />
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a asp-controller="Product" asp-action="Index" class="btn btn-primary" role="button">Cancel</a>
+        </div>
+    </form>
+</div>
